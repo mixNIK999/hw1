@@ -31,6 +31,7 @@ print_words() and print_top().
 
 import sys
 
+
 def read_words(filename):
     words = []
     with open(filename, "r") as f:
@@ -43,7 +44,33 @@ def read_words(filename):
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
 
-###
+
+def words_count(words):
+    words_cnt = {}
+    for word in words:
+        word = word.lower()
+        if words_cnt.get(word) is None:
+            words_cnt[word] = 1
+        else:
+            words_cnt[word] += 1
+    return words_cnt
+
+
+def print_words(filename):
+    words = read_words(filename)
+    words_cnt = words_count(words)
+    for key, cnt in sorted(words_cnt.items()):
+        print(key, cnt)
+
+
+def print_top(filename):
+    words = read_words(filename)
+    words_cnt = words_count(words)
+    for key, cnt in sorted(words_cnt.items(),
+                           key=lambda item: item[1],
+                           reverse=True)[:10]:
+        print(key, cnt)
+
 
 # This basic command line argument parsing code is provided and
 # calls the print_words() and print_top() functions which you must define.

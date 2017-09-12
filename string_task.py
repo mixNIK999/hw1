@@ -7,8 +7,15 @@
 #
 # Example input: 'read'
 # Example output: 'reading'
+
+
 def verbing(s):
-    return
+    if len(s) > 3:
+        if s[-3:] == "ing":
+            s = s[:-3] + "ly"
+        else:
+            s += "ing"
+    return s
 
 
 # Given a string, find the first appearance of the
@@ -20,7 +27,17 @@ def verbing(s):
 # Example input: 'This dinner is not that bad!'
 # Example output: 'This dinner is good!'
 def not_bad(s):
-    return
+    fr_not, fr_bad = -1, -1
+    for i in range(len(s) - 3):
+        if fr_not == -1 and s[i:i+3] == "not":
+            fr_not = i
+
+        if fr_bad == -1 and s[i:i+3] == "bad":
+            fr_bad = i
+
+    if(fr_not != -1 and fr_bad != -1 and fr_not < fr_bad):
+        s = s[:fr_not] + "good" + s[fr_bad + 3:]
+    return s
 
 
 # Consider dividing a string into two halves.
@@ -34,4 +51,8 @@ def not_bad(s):
 # Example input: 'abcd', 'xy'
 # Example output: 'abxcdy'
 def front_back(a, b):
-    return
+    n, m = len(a), len(b)
+    return a[:-(n // 2)] + b[:-(m // 2)] + a[-(n // 2):] + b[-(m // 2):]
+
+a, b = 'abcde', 'xyz'
+print(front_back(a, b))
