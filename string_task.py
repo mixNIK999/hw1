@@ -10,7 +10,7 @@
 
 
 def verbing(s):
-    if len(s) > 3:
+    if len(s) >= 3:
         if s[-3:] == "ing":
             s = s[:-3] + "ly"
         else:
@@ -27,14 +27,7 @@ def verbing(s):
 # Example input: 'This dinner is not that bad!'
 # Example output: 'This dinner is good!'
 def not_bad(s):
-    fr_not, fr_bad = -1, -1
-    for i in range(len(s) - 3):
-        if fr_not == -1 and s[i:i+3] == "not":
-            fr_not = i
-
-        if fr_bad == -1 and s[i:i+3] == "bad":
-            fr_bad = i
-
+    fr_not, fr_bad = s.find("not"), s.find("bad")
     if(fr_not != -1 and fr_bad != -1 and fr_not < fr_bad):
         s = s[:fr_not] + "good" + s[fr_bad + 3:]
     return s
@@ -56,3 +49,4 @@ def front_back(a, b):
 
 # a, b = 'abcde', 'xyz'
 # print(front_back(a, b))
+# print(verbing("read"))

@@ -49,7 +49,7 @@ def words_count(words):
     words_cnt = {}
     for word in words:
         word = word.lower()
-        if words_cnt.get(word) is None:
+        if word not in words_cnt:
             words_cnt[word] = 1
         else:
             words_cnt[word] += 1

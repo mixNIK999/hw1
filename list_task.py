@@ -24,7 +24,7 @@ def linear_merge(lst1, lst2):
         else:
             res.append(b)
             i2 += 1
-    return lst1[i1:] + lst2[i2:]
+    return res + lst1[i1:] + lst2[i2:]
 
 # lst1 = list(map(int, input().split()))
 # lst2 = list(map(int, input().split()))
