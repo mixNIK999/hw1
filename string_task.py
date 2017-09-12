@@ -54,5 +54,5 @@ def front_back(a, b):
     n, m = len(a), len(b)
     return a[:-(n // 2)] + b[:-(m // 2)] + a[-(n // 2):] + b[-(m // 2):]
 
-a, b = 'abcde', 'xyz'
-print(front_back(a, b))
+# a, b = 'abcde', 'xyz'
+# print(front_back(a, b))
